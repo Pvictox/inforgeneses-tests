@@ -4,6 +4,8 @@ def iziSolver()->None:
         Imprime 'Buzz' caso o respectivo valor de 'i' for múltiplo de 5.
         Imprime 'FizzBuzz' caso o respectivo valor de 'i' for múltiplo de 5 E de 3 ao mesmo tempo.
         Imprime o valor de 'i' caso contrário.
+
+        Complexidade: O(n).
     '''
     for i in range(1,51):
         if (i%3 == 0 and i%5==0): print("FizzBuzz")
