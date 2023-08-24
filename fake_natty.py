@@ -38,7 +38,7 @@ while (numCorridas != 0 and quantPilotos != 0):
                              Caso o nosso sistema de pontuação fosse assim: S = [1,10] indicaria que apenas 1 corredor (S[0]) receberia os pontos e que o primeiro colocado receberia 10 pontos(S[1]).
                              Observe que nesse caso, o corredor da posição M[0][0] da matriz não receberia os pontos pq 2 não é MENOR OU IGUAL A 1. 
                     '''
-                    dicionarioPilotos[j+1] += vetorPont[ matrizCorridas[i][j] - 1] #Atualizo a pontuação do corredor.
+                    dicionarioPilotos[j+1] += vetorPont[ matrizCorridas[i][j] - 1] #Atualizo a pontuação do corredor. (Logicamente: acesso na posição referente a colocação daquele corredor M[i][j] dentro do vetor de pontuações para verificar quantos pontos ele ganhará)
         sortDict = ( sorted( dicionarioPilotos.items(), key= operator.itemgetter(1), reverse=True) ) #ORDENO O DICIONÁRIO DE ACORDO COM A PONTUÇÃO (Decrescente)
         strResult = "" 
         for elemento in sortDict:
