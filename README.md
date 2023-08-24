@@ -2,7 +2,7 @@
 
 Este repositório é dedicado ao algoritmos implementados para a resolução do primeiro teste de lógica do processo seletivo de estagiário da Inforgeneses.
 
-## Complexidade dos algorítmos
+## Complexidade dos algoritmos
 
 |  **File**  | **Complexity** |
 |:----------:|:--------------:|
