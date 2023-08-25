@@ -4,13 +4,15 @@ import operator
     Complexidade: O(n^2) 
     TODO: Verificar meios de otimização
 '''
-# 1) Inicializar a matriz com as corridas
 
 numCorridas, quantPilotos = 1,1 #Inicialização das variáveis que servirão como controle do meu loop.
 result = [] #Lista de resultados que serão mostradas ao final do codigo.
-numCorridas, quantPilotos = [int(i) for i in input().split()] #Leitura dos valores 'G' (num. corridas) e 'P' (quant de pilotos)
-while (numCorridas != 0 and quantPilotos != 0):
+
+while (True):
+    numCorridas, quantPilotos = [int(i) for i in input().split()] #Leitura dos valores 'G' (num. corridas) e 'P' (quant de pilotos)
+    if (numCorridas == 0 and quantPilotos == 0): break
     matrizCorridas = []
+
     for i in range(numCorridas):  #Decidi colocar as corridas em uma matriz. Este loop serve para popular a mesma com as entradas referentes à corrida.
         matrizCorridas.append([])
         matrizCorridas[i] = [int(i) for i in input().split()] 
@@ -25,6 +27,7 @@ while (numCorridas != 0 and quantPilotos != 0):
     for i in range(1, quantPilotos+1):
         dicionarioPilotos[i] = 0 #Inicializo as chaves sendo que cada uma irá ter 0 pontos (Ainda não foi calculado a corrida)
     quantSistemaPontu = int(input()) #Quantidade de sistemas de pontuação que serão passados como dado.
+
     for i in range(quantSistemaPontu):
         dicionarioPilotos = dicionarioPilotos.fromkeys(dicionarioPilotos, 0) #Importante: A cada calculo do sitema de pontuação o dicionário de pontos deve ser RESETADO. Esta linha faz isso setando os valores de cada corredor para 0. 
         vetorPont = [int(i) for i in input().split()] #Lendo a pontuação daquele respectivo sistema de pontuação
@@ -41,15 +44,17 @@ while (numCorridas != 0 and quantPilotos != 0):
                     dicionarioPilotos[j+1] += vetorPont[ matrizCorridas[i][j] - 1] #Atualizo a pontuação do corredor. (Logicamente: acesso na posição referente a colocação daquele corredor M[i][j] dentro do vetor de pontuações para verificar quantos pontos ele ganhará)
         sortDict = ( sorted( dicionarioPilotos.items(), key= operator.itemgetter(1), reverse=True) ) #ORDENO O DICIONÁRIO DE ACORDO COM A PONTUÇÃO (Decrescente)
         strResult = "" 
+
         for elemento in sortDict:
             if (elemento[1] == sortDict[0][1]): #Comparo a pontuação de um determinado corredor com a pontuação do primeiro. Observe que aqui eu estou usando o dicionario ordenado do maio para o menor então o primeiro corredor sempre terá a maior pont.
                 strResult+= f"{elemento[0]} " 
             else: break
+
         result.append(strResult) #Adiciono a string de resultado no vetor
         vetorPont.clear() #Limpo as estruturas usadas, preparando-as para o próximo conjunto de dados (se houver)
         sortDict.clear()
+
     dicionarioPilotos.clear()
-    numCorridas, quantPilotos = [int(i) for i in input().split()]
 
 for elemento in result:
     print(elemento) #Imprimo o resultado final
